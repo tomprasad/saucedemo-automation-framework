@@ -11,5 +11,4 @@ class LoginPage(BasePage):
         self.click(self.LOGIN_BUTTON)
     def get_error_msg(self):
         return self.get_text(self.ERROR_MESSAGE)
-    def is_login_error_visible(self):
-        return self.is_visible(self.ERROR_MESSAGE)
+    
