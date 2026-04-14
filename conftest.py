@@ -1,6 +1,7 @@
 from playwright.sync_api import sync_playwright
 import pytest
 from api.clients.user_client import UserClient
+from pages.login_page import LoginPage
 
 #Add command line options
 def pytest_addoption(parser):
@@ -41,3 +42,11 @@ def page(browser):
 @pytest.fixture(scope='session')
 def user_client():
     return UserClient()
+#Fixture that logs in a user and returns the logged-in page
+@pytest.fixture(scope='function')
+def logged_in_page(page):
+    login_page=LoginPage(page)
+    login_page.login("standard_user", "secret_sauce")
+    return page
+
+
