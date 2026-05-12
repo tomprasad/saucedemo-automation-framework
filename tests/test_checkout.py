@@ -1,6 +1,8 @@
 from pages.inventory_page import InventoryPage
 from pages.cart_page import CartPage
 from pages.checkout_page import CheckoutPage
+import pytest
+@pytest.mark.regression
 def test_complete_checkout(logged_in_page):
     inventory_page=InventoryPage(logged_in_page)
     inventory_page.add_product_to_cart("Sauce Labs Backpack")

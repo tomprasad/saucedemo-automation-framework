@@ -1,5 +1,7 @@
 from pages.inventory_page import InventoryPage
 from pages.cart_page import CartPage
+import pytest
+@pytest.mark.regression
 def test_product_added_to_cart(logged_in_page):
     inventory_page=InventoryPage(logged_in_page)
     inventory_page.add_product_to_cart("Sauce Labs Backpack")

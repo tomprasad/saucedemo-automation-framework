@@ -1,4 +1,6 @@
 from pages.inventory_page import InventoryPage
+import pytest
+@pytest.mark.regression
 def test_add_product_to_cart(logged_in_page):
     inventory_page=InventoryPage(logged_in_page)
     inventory_page.is_inventory_page_visible()

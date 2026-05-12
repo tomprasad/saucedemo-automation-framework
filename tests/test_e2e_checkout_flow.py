@@ -3,6 +3,7 @@ from pages.cart_page import CartPage
 from pages.checkout_page import CheckoutPage
 import pytest
 @pytest.mark.e2e
+@pytest.mark.regression
 def test_e2e_checkout_flow(logged_in_page):
     # Initialize page objects
     inventory_page = InventoryPage(logged_in_page)
