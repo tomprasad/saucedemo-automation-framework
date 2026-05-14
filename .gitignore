@@ -213,3 +213,4 @@ videos/
 screenshots/
 reports/
 .env
+logs/
