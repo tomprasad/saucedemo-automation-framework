@@ -37,12 +37,12 @@ class BasePage:
 
         return text
 
-    def is_visible(self, locator):
-
-        logger.info(f"Checking visibility of element: {locator}")
-
-        visible = self.page.locator(locator).is_visible()
-
-        logger.info(f"Visibility status for {locator}: {visible}")
-
-        return visible
+    def is_visible(self, locator, timeout: int = 60000) -> bool:
+     logger.info(f"Checking visibility of element: {locator} (timeout={timeout} ms)")
+     try:
+         self.page.locator(locator).wait_for(state="visible", timeout=timeout)
+         logger.info(f"Element is visible: {locator}")
+         return True
+     except Exception:
+        logger.info(f"Element not visible within {timeout} ms: {locator}")
+        return False
