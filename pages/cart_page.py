@@ -21,10 +21,13 @@ class CartPage(BasePage):
     def is_cart_page_visible(self):
 
         logger.info("Checking if cart page is visible")
-
-        is_visible = self.page.locator(
-            self.CART_ITEM
-        ).first.is_visible()
+        try:
+            self.page.locator(self.CART_ITEM).first.wait_for(
+                state="visible", timeout=10000
+            )
+            is_visible = True
+        except Exception:
+            is_visible = False
 
         logger.info(f"Cart page visibility status: {is_visible}")
 
@@ -34,6 +37,9 @@ class CartPage(BasePage):
     def get_cart_items_count(self):
 
         logger.info("Fetching number of items in cart")
+        self.page.locator(self.CART_ITEM).first.wait_for(
+            state="attached", timeout=10000
+        )
 
         count = self.page.locator(self.CART_ITEM).count()
 
