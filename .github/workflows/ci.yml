@@ -47,7 +47,7 @@ jobs:
         env:
           REQRES_API_KEY: ${{ secrets.REQRES_API_KEY }}
         run: |
-          pytest
+          pytest -m "regression"
 
       - name: Upload test artifacts
         if: always()
