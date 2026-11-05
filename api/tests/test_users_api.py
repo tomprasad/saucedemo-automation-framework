@@ -4,10 +4,9 @@ import pytest
 
 @pytest.mark.api
 @pytest.mark.regression
-def test_get_user():
+def test_get_user(user_client):
 
-    client = UserClient()
-    response = client.get_user(2)
+    response = user_client.get_user(2)
     response_body = response.json()
     assert response.status_code == 200
     assert response_body["data"]["id"] == 2
@@ -15,11 +14,9 @@ def test_get_user():
 
 @pytest.mark.api
 @pytest.mark.regression
-def test_create_user():
-
-    client = UserClient()
-
-    response = client.create_user(
+def test_create_user(user_client):
+ 
+    response = user_client.create_user(
         name="Tom",
         job="QA Engineer"
     )
